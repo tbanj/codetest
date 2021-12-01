@@ -9,8 +9,10 @@
 
 <div class="" id="parentDiv">
   <div id="middle-container">
-    <div  class="myBar" style="width:50%">50%</div>
-    <div  class="myBar" style="width:50%">50%</div>
+    <!-- <div  id="myBar" style="width:20%">20%</div> -->
+    <div   class="myBar" style="width:20%">20%</div>
+    <div   class="myBar" style="width:20%">20%</div>
+    <!-- <div  class="myBar" style="width:50%">50%</div> -->
   </div>
 </div>
 <br>
@@ -18,28 +20,68 @@
 
 </div>
 
-<script>
-function move() {
-  let elem = document.querySelectorAll(".myBar");   
-  console.log('elem', elem)
-  for (i = 0; i < elem.length; i++) {
-    console.warn('elem[i].style', elem[i])
-    let width = 50;
-  var id = setInterval(frame(elem[i]), 10);
-  function frame(ele) {
+<!-- <script>
+  const changeProgress =(ele)=> {
+    var width = 50;
+  var id = setInterval(frame(), 10);
+  function frame() {
     if (width >= 100) {
       clearInterval(id);
     } else {
       width++; 
-      console.warn('elem[i].style', ele[i])
+      console.warn('elem[i].style', ele)
       ele.style.width = width + '%'; 
       ele.innerHTML = width * 1  + '%';
     }
   }
   }
+function move() {
+  let elem = document.querySelector("#myBar");   
+  console.log('elem', elem)
+
+  /* for (i = 0; i < elem.length; i++) {
+    console.warn('elem[i].style', elem[i])
+    // changeProgress(elem[i]);
+    
+  } */
+  var width = 20;
+  var id = setInterval(frame(), 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++; 
+      console.warn('elem[i].style', elem)
+      elem.style.width = width + '%'; 
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+
+  
   
 }
-</script>
+</script> -->
+<script>
+  const changeProgress =(elem) => {
+    var width = 50;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+      } else {
+        width++; 
+        elem.style.width = width + '%'; 
+        elem.innerHTML = width * 1  + '%';
+      }
+    }
+  }
+  function move() {
+    var elem = document.querySelectorAll(".myBar");   
+    for(let i=0; i<elem.length; i++) {
+      changeProgress(elem[i]);
+    }
+  }
+  </script>
 
 </body>
 </html> 
