@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<title>Progress Bar</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<body>
+<div class="w3-container">
+
+
+<div class="" id="parentDiv">
+  <div id="middle-container">
+    <div  class="myBar" style="width:50%">50%</div>
+    <div  class="myBar" style="width:50%">50%</div>
+  </div>
+</div>
+<br>
+<button class="" onclick="move()">Click Me</button> 
+
+</div>
+
+<script>
+function move() {
+  let elem = document.querySelectorAll(".myBar");   
+  console.log('elem', elem)
+  for (i = 0; i < elem.length; i++) {
+    console.warn('elem[i].style', elem[i])
+    let width = 50;
+  var id = setInterval(frame(elem[i]), 10);
+  function frame(ele) {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++; 
+      console.warn('elem[i].style', ele[i])
+      ele.style.width = width + '%'; 
+      ele.innerHTML = width * 1  + '%';
+    }
+  }
+  }
+  
+}
+</script>
+
+</body>
+</html> 

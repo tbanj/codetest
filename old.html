@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<body>
+<div class="w3-container">
+
+
+<div class="" id="parentDiv">
+  <div id="middle-container">
+    <div   id="myBar" style="width:20%">20%</div>
+    <!-- <div id="pb2"  class="myBar" style="width:50%">50%</div>
+    <div id="pb3"  class="myBar" style="width:50%">50%</div>
+    <div id="pb4"  class="myBar" style="width:50%">50%</div>
+    <div id="pb5" class="myBar" style="width:50%">50%</div> -->
+  </div>
+</div>
+<br>
+<button class="w3-button w3-green" onclick="move()">Click Me</button> 
+
+</div>
+
+<script>
+function move() {
+  var elem = document.querySelectorAll("#myBar");   
+  var width = 50;
+  var id = setInterval(frame, 10);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++; 
+      elem.style.width = width + '%'; 
+      elem.innerHTML = width * 1  + '%';
+    }
+  }
+}
+</script>
+
+</body>
+</html> 
