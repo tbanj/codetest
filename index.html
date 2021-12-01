@@ -4,26 +4,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="style.css">
 <body>
-<div class="w3-container">
+<div id="parent" class="">
 
-
-<div class="" id="parentDiv">
-  <div id="middle-container">
-    <div id="pb1"  class="myBar" style="width:50%">50%</div>
-    <div id="pb2"  class="myBar" style="width:50%">50%</div>
-    <div id="pb3"  class="myBar" style="width:50%">50%</div>
-    <div id="pb4"  class="myBar" style="width:50%">50%</div>
-    <div id="pb5"  class="myBar" style="width:50%">50%</div>
+<div><div class="" id="parentDiv">
+  <div>
+    <div id="middle-container">
+      <div id="pb1"  class="myBar cssprogress-active" style="width:50%">50%</div>
+      <div id="pb2"  class="myBar cssprogress-active" style="width:50%">50%</div>
+      <div id="pb3"  class="myBar cssprogress-active" style="width:50%">50%</div>
+      <div id="pb4"  class="myBar cssprogress-active" style="width:50%">50%</div>
+      <div id="pb5"  class="myBar cssprogress-active" style="width:50%">50%</div>
+    </div>
   </div>
-</div>
-<br>
+  <br>
 <button class="" onclick="move()">Click Me</button> 
+<button id="resetBTN" class="" onclick="resetBTN()">Reset Me</button> 
+</div></div>
+
 
 </div>
 
 <script>
+   var elem = document.querySelectorAll(".myBar");  
   const changeProgress =(elem) => {
-    var width = 50;
+    var width = parseInt(elem.style.width);
     var id = setInterval(frame, 10);
     function frame() {
       if (width >= 100) {
@@ -36,9 +40,31 @@
     }
   }
   function move() {
-    var elem = document.querySelectorAll(".myBar");   
+   
     for(let i=0; i<elem.length; i++) {
       changeProgress(elem[i]);
+    }
+  }
+
+
+
+  const deductProgress =(elem) => {
+    console.log(elem, 'ii')
+    var width = parseInt(elem.style.width);
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width <= 50) {
+        clearInterval(id);
+      } else {
+        width--; 
+        elem.style.width = width + '%'; 
+        elem.innerHTML = width*1  + '%';
+      }
+    }
+  }
+  function resetBTN() {
+    for(let i=0; i<elem.length; i++) {
+      deductProgress(elem[i]);
     }
   }
   </script>
